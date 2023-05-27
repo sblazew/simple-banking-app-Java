@@ -1,3 +1,6 @@
 # simple-banking-app-Java
-work in progress
-Simple console app, no data validation yet
+Simple console app.
+Features:
+ - adding customer and initial amount,
+ - adding transactions,
+ - balance,
