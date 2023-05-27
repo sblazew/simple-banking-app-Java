@@ -36,14 +36,18 @@ public class Bank {
         Customer ifCustomerExists = findCustomer(name);
         if (ifCustomerExists != null) {
             ifCustomerExists.addTransaction(amount);
+            System.out.println("Amount: " + amount + " added to customer: " + ifCustomerExists +
+                    "\nChoose option");
             return true;
         }
+        System.out.println("Customer not found, transaction aborted. \nChoose option");
         return false;
     }
 
     public boolean customersList (boolean showTransactions) {
 
         ArrayList<Customer> bankCustomers = getCustomerList();
+        double balance = 0;
         for(int i=0; i<bankCustomers.size(); i++) {
             Customer bankCustomer = bankCustomers.get(i);
             System.out.println("customer: " + bankCustomer.getName()+"[" + (i+1) +"]");
@@ -52,9 +56,12 @@ public class Bank {
                 ArrayList<Double> transactions = bankCustomer.getTransactionList();
                 for(int j= 0; j<transactions.size(); j++) {
                     System.out.println("["+(j+1)+"] amount " + transactions.get(j));
+                    balance+=transactions.get(j);
                 }
             }
+            System.out.println("Balance: "+ balance);
         }
+
         return true;
     }
 
