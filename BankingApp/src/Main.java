@@ -59,6 +59,11 @@ public class Main {
                         System.out.println("choose option");
                         break;
                     case 5:
+                         try {
+                            bank.saveFile();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         quit = true;
                         break;
                 }
