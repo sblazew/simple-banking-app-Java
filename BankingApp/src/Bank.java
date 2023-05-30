@@ -64,5 +64,24 @@ public class Bank {
 
         return true;
     }
-
+ public void saveFile() throws IOException {
+        Path path = Paths.get(filename);
+        BufferedWriter bw = Files.newBufferedWriter(path);
+        try {
+//iterating through list and saving
+            Iterator<Customer> iter = customerList.iterator();
+            while (iter.hasNext()) {
+                Customer customer = iter.next();
+                bw.write(String.format("%s\t%s",
+                        customer.getName(),
+                        customer.getTransactionList()));
+                bw.newLine();
+            }
+        }finally{
+            //testing if object if valid before trying to close it, so there is no other exception
+            if (bw != null) {
+                bw.close();
+            }
+        }
+    }
 }
